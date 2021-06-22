@@ -14,7 +14,6 @@ var con = mysql.createConnection({
     password: "",
     database: "dbtodo"
 });
-// 
 app.post('/', (req, res, next) => {
     con.query('select count(*) as jumlah_user from tabel_users', function(err, result){
         if (result[0].jumlah_user > 0){
@@ -48,8 +47,7 @@ app.delete('/:id',auth, (req, res)=> {
         else {
             con.query('DELETE FROM tabel_users WHERE id = ?', [req.params.id])
         }
-    })   
-    // res.send('DELETE USER ID :  ' + req.params.id)            
+    })             
     res.end()
 })
  
